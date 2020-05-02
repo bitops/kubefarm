@@ -1,3 +1,3 @@
 #!/bin/bash
 
-fly -t ci set-pipeline -p maven-cf-simple -c pipeline.yml
+fly -t ci set-pipeline -p kubefarm -c pipeline.yml

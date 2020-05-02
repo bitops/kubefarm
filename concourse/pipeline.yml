@@ -3,7 +3,7 @@ resources:
 - name: source-code
   type: git
   source:
-    uri: https://github.com/patrickcrocker/concourse-maven-cf-simple.git
+    uri: https://github.com/bitops/kubefarm.git
     branch: master
 
 jobs:

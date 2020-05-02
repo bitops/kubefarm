@@ -1,3 +1,3 @@
 #!/bin/bash
 
-minikube start --driver='docker'
+minikube start --driver='vmware'
