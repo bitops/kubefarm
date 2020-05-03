@@ -3,8 +3,8 @@ require 'webrick'
 class Simple < WEBrick::HTTPServlet::AbstractServlet
   def do_GET request, response
     response.status = 200
-    response['Content-Type'] = 'text/plain'
-    response.body = 'Hello, World!'
+    response['Content-Type'] = 'text/html'
+    response.body = DATA.read
   end
 end
 
@@ -16,3 +16,16 @@ trap 'INT' do
 end
 
 server.start
+
+__END__
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kubefarm</title>	
+	</head>
+	<body>
+		<div>
+			<p>Behold the magical power of Kubernetes!</p>
+		</div>	
+  </body>
+</html>
