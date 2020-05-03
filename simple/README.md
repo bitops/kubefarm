@@ -1,5 +1,3 @@
-# kubefarm
-
 Simple container to run on Kubernetes
 
 ## simple repositories
