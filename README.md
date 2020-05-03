@@ -11,3 +11,7 @@ You can look in the `simple-docker` repository to get an understanding of how th
 You can then look in the `simple-pod` repository to see a minimal Pod manifest that gets the container up and running.
 
 Both directories contain shell scripts with the necessary commands to get everything working.
+
+## Prerequisites
+
+You'll have to have Docker installed as well as Kubernetes. The scripts in the repo assume you have `minikube` installed.
