@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-http
+spec:
+  containers:
+    - image: bitops/simple-http:latest
+      name: simple-http
+      ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
