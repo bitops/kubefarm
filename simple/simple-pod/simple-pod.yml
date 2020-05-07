@@ -4,8 +4,15 @@ metadata:
   name: simple-http
 spec:
   containers:
-    - image: bitops/simple-http:latest
+    - image: bitops/simple-http:v0.0.2
       name: simple-http
+      resources:
+          requests:
+            cpu: "500m"
+            memory: "128Mi"
+          limits:
+            cpu: "750m"
+            memory: "256Mi"
       ports:
         - containerPort: 8080
           name: http
