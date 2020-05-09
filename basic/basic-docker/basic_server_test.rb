@@ -25,8 +25,11 @@ describe "Basic Pod-ready containerized web process" do
   end
 
   describe "readiness probe" do
+    READINESS_PATH = URI('http://127.0.0.1:3000/readiness')
+
     it "must respond with 200" do
-      skip("not implemented yet")
+      res = Net::HTTP.get_response(READINESS_PATH)
+      assert_equal 200, res.code.to_i
     end
   end
 
