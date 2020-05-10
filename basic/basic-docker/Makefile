@@ -5,7 +5,7 @@ build:
 test:
 	ruby basic_server_test.rb
 
-publish: build
+push: build
 	./publish.sh
 
 run:

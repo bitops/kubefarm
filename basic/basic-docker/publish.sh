@@ -1,4 +1,6 @@
 #!/bin/bash
 
-docker tag "$$(docker images | grep 'bitops/basic-http-pod' | awk '{print $$3}')" bitops/basic-http-pod
-docker push bitops/basic-http-pod
+VERSION=$(cat version.txt)
+NAME_AND_VERSION="bitops/basic-http-pod:$VERSION"
+docker build -t "$NAME_AND_VERSION" .
+docker push "$NAME_AND_VERSION"
