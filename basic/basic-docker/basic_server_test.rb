@@ -3,9 +3,9 @@ require 'net/http'
 
 describe "Basic Pod-ready containerized web process" do
 
-  describe "main application" do
-    ROOT_PATH = URI('http://127.0.0.1:3000/')
+  ROOT_PATH = URI('http://127.0.0.1:3000/')
 
+  describe "main application" do
     describe "GET /" do
       it "works" do
         res = Net::HTTP.get_response(ROOT_PATH)
@@ -24,6 +24,21 @@ describe "Basic Pod-ready containerized web process" do
     end
   end
 
+  describe "routing" do
+    describe "allowed routes" do
+      it "allows /" do
+        res = Net::HTTP.get_response(ROOT_PATH)
+        assert_equal 200, res.code.to_i
+      end
+
+      it "disallows anything else" do
+        assert_equal 404, Net::HTTP.get_response(URI('http://127.0.0.1:3000/foo')).code.to_i
+        assert_equal 404, Net::HTTP.get_response(URI('http://127.0.0.1:3000/bar')).code.to_i
+        assert_equal 404, Net::HTTP.get_response(URI('http://127.0.0.1:3000/baz')).code.to_i
+      end
+    end
+  end
+
   describe "readiness probe" do
     READINESS_PATH = URI('http://127.0.0.1:3000/readiness')
 
@@ -34,8 +49,11 @@ describe "Basic Pod-ready containerized web process" do
   end
 
   describe "liveness probe" do
+    LIVENESS_PATH = URI('http://127.0.0.1:3000/liveness')
+
     it "must respond with 200" do
-      skip("not implemented yet")
+      res = Net::HTTP.get_response(LIVENESS_PATH)
+      assert_equal 200, res.code.to_i
     end
   end
 

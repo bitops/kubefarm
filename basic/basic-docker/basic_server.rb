@@ -3,9 +3,13 @@ require 'json'
 
 class Simple < WEBrick::HTTPServlet::AbstractServlet
   def do_GET request, response
-    response.status = 200
-    response['Content-Type'] = 'application/json'
-    response.body = "{}"
+    if %w(/ /readiness /liveness).member?(request.path_info)
+      response.status = 200
+      response['Content-Type'] = 'application/json'
+      response.body = "{}"
+    else
+      response.status = 404
+    end
   end
 end
 
