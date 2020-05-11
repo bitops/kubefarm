@@ -2,11 +2,23 @@ require 'webrick'
 require 'json'
 
 class Simple < WEBrick::HTTPServlet::AbstractServlet
+
+  MAGIC_DATA = "/var/magic/foo.txt"
+
   def do_GET request, response
-    if %w(/ /readiness /liveness).member?(request.path_info)
+    if %w(/ /readiness /liveness /magic).member?(request.path_info)
       response.status = 200
       response['Content-Type'] = 'application/json'
-      response.body = "{}"
+
+      if request.path_info == "/magic"
+        data = {data: ""}
+        if File.exists?(MAGIC_DATA)
+          data[:data] = File.read(MAGIC_DATA)
+        end
+        response.body = data.to_json
+      else
+        response.body = "{}"
+      end
     else
       response.status = 404
     end

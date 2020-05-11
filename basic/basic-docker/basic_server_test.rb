@@ -22,6 +22,17 @@ describe "Basic Pod-ready containerized web process" do
         assert_equal "{}", res.body
       end
     end
+
+    describe "GET /magic" do
+      MAGIC_PATH = URI('http://127.0.0.1:3000/magic')
+
+      it "works" do
+        res = Net::HTTP.get_response(MAGIC_PATH)
+        assert_equal 200, res.code.to_i
+        assert_equal "application/json", res.header["Content-Type"]
+        assert_equal '{"data":""}', res.body
+      end
+    end
   end
 
   describe "routing" do
