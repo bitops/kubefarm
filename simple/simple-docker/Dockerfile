@@ -3,8 +3,8 @@
 
 FROM ruby
 
-COPY server.rb /server.rb
+COPY simple_server.rb /simple_server.rb
 
 EXPOSE 8080
 
-CMD [ "ruby", "server.rb" ]
+CMD [ "ruby", "simple_server.rb" ]
