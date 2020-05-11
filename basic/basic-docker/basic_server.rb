@@ -3,7 +3,7 @@ require 'json'
 
 class Simple < WEBrick::HTTPServlet::AbstractServlet
 
-  MAGIC_DATA = "/var/magic/foo.txt"
+  MAGIC_DATA = "/magic/foo.txt"
 
   def do_GET request, response
     if %w(/ /readiness /liveness /magic).member?(request.path_info)

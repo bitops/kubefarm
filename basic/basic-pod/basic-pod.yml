@@ -3,9 +3,16 @@ kind: Pod
 metadata:
   name: basic-http
 spec:
+  volumes:
+    - name: "magic-data"
+      hostPath:
+          path: "/tmp/magic"
   containers:
-    - image: bitops/basic-http-pod:0.0.1
+    - image: bitops/basic-http-pod:0.0.3
       name: basic-http
+      volumeMounts:
+        - mountPath: "/magic"
+          name: "magic-data"
       resources:
           requests:
             cpu: "500m"
