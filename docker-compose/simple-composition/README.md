@@ -1,5 +1,5 @@
 
-# Docker Compose
+# Simple composition of containers from DockerHub
 
 A simple example of how to run Docker Compose to start multiple containers simultaneously.
 
