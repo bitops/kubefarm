@@ -1,0 +1,13 @@
+# https://docs.docker.com/compose/compose-file/
+version: '3.8'
+services:
+  simple-http:
+    build: ../../simple/simple-docker/
+    ports:
+      - "3001:8080"
+  tiny-whale:
+    build:
+      context: https://github.com/bitops/tiny-whale.git
+    ports:
+      - "3000:8080"
+
