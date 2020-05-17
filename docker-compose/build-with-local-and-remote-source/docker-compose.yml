@@ -7,6 +7,8 @@ services:
   tiny-whale:
     build:
       context: https://github.com/bitops/tiny-whale.git
+      args:
+        GITHASH: "${GITHASH}"
     ports:
       - "3000:8080"
 

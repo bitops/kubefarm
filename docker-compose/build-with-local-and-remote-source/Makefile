@@ -1,6 +1,6 @@
 
 start:
-	docker-compose up -d
+	GITHASH=$$(git rev-parse head) docker-compose up -d --build
 
 stop:
 	docker-compose down
